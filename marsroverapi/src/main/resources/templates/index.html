@@ -5,12 +5,8 @@
     <body>
         <h2>Welcome to the Mars Rover API Web App</h2>
 
-        <div th:text="${'name: ' + name}">
+        <img th:each="photo : ${roverData.photos}" th:src="${photo.imgSrc}"/>
         </div>
-        <div th:text="${'address: ' + address}">
-        </div>
-        <div th:text="${'Hi there'}"></div>
-        <div> this is a test to prove that we're not caching!!!</div>
     
     </body>
 </html>
