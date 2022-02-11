@@ -9,10 +9,12 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class MarsRoverApiService {
     
-    public MarsRoverApiResponse getRoverData() {
+    private static final String API_KEY = "ZCNvteFnebHwsm1saQ6aLa11bKq5hznKbIFsnQ3q";
+    
+    public MarsRoverApiResponse getRoverData(String rover, Integer marsSol) {
         RestTemplate rt = new RestTemplate();
         
-        ResponseEntity<MarsRoverApiResponse> response = rt.getForEntity("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=2&api_key=DEMO_KEY", MarsRoverApiResponse.class);
+        ResponseEntity<MarsRoverApiResponse> response = rt.getForEntity("https://api.nasa.gov/mars-photos/api/v1/rovers/"+ rover +"/photos?sol="+ marsSol +"&api_key="+ API_KEY, MarsRoverApiResponse.class);
         
         return response.getBody();
     }
